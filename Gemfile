@@ -6,6 +6,14 @@ gem 'rails', '~> 6.1.1'
 gem 'pg'
 gem 'puma'
 gem 'bootsnap', require: false
+gem 'grape'
+gem 'grape-entity'
+gem 'grape-kaminari'
+gem 'grape_logging'
+gem 'pry-rails'
+gem 'rack'
+gem 'rack-cas'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -15,7 +23,6 @@ group :development do
   gem 'web-console'
   gem 'rack-mini-profiler'
   gem 'listen'
-  gem 'spring'
 end
 
 group :test do
