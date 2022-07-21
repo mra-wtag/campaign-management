@@ -4,15 +4,7 @@ module API
 
     included do
       rescue_from Grape::Exceptions::ValidationErrors do |e|
-        errors = {}
-        e.errors.each do |keys, values|
-          keys.each do |key|
-            errors[key] ||= []
-            errors[key].concat values.map(&:to_s)
-          end
-        end
-
-        response = { status: 422, message: e.message, errors: errors }
+        response = { status: 422, message: e.message }
         rack_response response.to_json, 422
       end
 

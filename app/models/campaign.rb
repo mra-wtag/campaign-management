@@ -10,6 +10,8 @@ class Campaign < ApplicationRecord
   validates :country_code, length: { is: 2 }
   validates :currency_code, length: { is: 3 }
   
+  has_many :investments, dependent: :destroy
+  
   def set_default_data
     self.currency_code = 'GBP'
   end
@@ -17,6 +19,6 @@ class Campaign < ApplicationRecord
   def percentage_raised
     return 0.to_d.round(2) if investment_raised.zero?
     
-    (target_amount / investment_raised).round(2)
+    ((investment_raised / target_amount) * 100).round(2)
   end
 end

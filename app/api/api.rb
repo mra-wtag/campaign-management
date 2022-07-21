@@ -1,6 +1,9 @@
 require 'grape_logging'
 require 'grape-kaminari'
 
+# Validators
+Dir[File.join(__dir__, 'api', 'validators', '*.rb')].each { |file| require file }
+
 module API
   class Dispatch < Grape::API
     PAGINATION_MAX_PER_PAGE = 300
@@ -10,16 +13,18 @@ module API
 
     include Grape::Kaminari
     include API::ExceptionHandling
+    
+    helpers do
+      #
+      # Strong Parameters
+      #
+      def permitted_params
+        declared(params, include_missing: false)
+      end
 
-    #
-    # Strong Parameters
-    #
-    def permitted_params
-      declared(params, include_missing: false)
-    end
-
-    def resource_params
-      permitted_params.except(:page, :per_page, :offset)
+      def resource_params
+        permitted_params.except(:page, :per_page, :offset)
+      end
     end
 
     #
@@ -51,6 +56,7 @@ module API
     #
     mount API::Resources::Ping
     mount API::Resources::Campaign
+    mount API::Resources::Investment
 
     route :any, '*path' do
       error!({ error:  'Not Found',
