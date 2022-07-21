@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-# require 'kaminari'
 require "rails/all"
 
 Bundler.require(*Rails.groups)
@@ -17,6 +16,7 @@ module CampaignManagement
     end
 
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/services)
 
     config.eager_load_paths << Rails.root.join('lib')
 

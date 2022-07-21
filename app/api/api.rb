@@ -34,9 +34,8 @@ module API
 
       # grape-kaminari will not return a header with the default value of 50 if there was no
       # per_page param
-      unless params[:per_page]
-        params[:per_page] = PAGINATION_DEFAULT_PER_PAGE
-      end
+      params[:per_page] = PAGINATION_DEFAULT_PER_PAGE unless params[:per_page]
+      params[:per_page] = 1 if params[:per_page].to_i.zero?
     end
 
     #
@@ -51,6 +50,7 @@ module API
     # Resources
     #
     mount API::Resources::Ping
+    mount API::Resources::Campaign
 
     route :any, '*path' do
       error!({ error:  'Not Found',

@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+1.upto(500) do |number|
+  Campaign.create(name: "Campaign #{number}",
+                  image_url: "https://base_url/campaign_#{number}.png",
+                  target_amount: (number + 100).to_d * 25,
+                  investment_multiple: (number + 2.5).to_d * 2.1,
+                  sector: 'common',
+                  country_code: 'GB')
+end
