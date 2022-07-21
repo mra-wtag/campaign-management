@@ -7,6 +7,8 @@ class ValidateInvestmentMultiple < Grape::Validations::Base
     return unless campaign
     
     amount = params[attr_name]
+    return unless amount
+    
     investment_multiple = campaign.investment_multiple
     currency = campaign.currency_code
     if amount < 1

@@ -8,7 +8,9 @@ class ValidateTargetAmount < Grape::Validations::Base
 
     target_amount = campaign.target_amount
     investment_raised = campaign.investment_raised
-    return if params[attr_name] + investment_raised <= target_amount
+    amount = params[attr_name]
+    return unless amount
+    return if amount + investment_raised <= target_amount
 
     currency = campaign.currency_code
     amount = target_amount - investment_raised

@@ -1,6 +1,9 @@
 class ValidateCampaign < Grape::Validations::Base
   def validate_param!(attr_name, params)
-    campaign = Campaign.find_by(id: params[attr_name])
+    campaign_id = params[attr_name]
+    return unless campaign_id
+    
+    campaign = Campaign.find_by(id: campaign_id)
     return if campaign
     
     message = "Invalid. Please provide a valid Campaign Id"
