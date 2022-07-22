@@ -7,8 +7,8 @@ class Campaign < ApplicationRecord
             :currency_code,
             :country_code,
             presence: true
-  validates :country_code, length: { is: 2 }
-  validates :currency_code, length: { is: 3 }
+  validates_length_of :country_code, minimum: 2, maximum: 2, allow_blank: false
+  validates_length_of :currency_code, minimum: 3, maximum: 3, allow_blank: false
   
   has_many :investments, dependent: :destroy
   
