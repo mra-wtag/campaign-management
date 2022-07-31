@@ -1,5 +1,16 @@
 # Campaign Management System
 
+### This project is still under construction.
+## TODO List
+- RSpec test for models
+- RSpec test for services
+- RSpec test for REST API Ednpoints
+- RSpec Integration Test for all API Endpoints
+- Adding sorting and filtering to Campaign List API
+- Some more functionalities
+- Dockerization
+
+
 This is a Campaign Management System API with which you can List Down all campaigns, see the details of any 
 specific campaign and invest on any campaign. 
 - [How to Setup](#how-to-setup)
