@@ -272,7 +272,7 @@ Key | Type | Description
 
 ### Campaigns by Id
 ###### Endpoint
-```json
+```curl
 GET /api/campaigns/:campaign_uuid
 Example: localhost:3000/api/campaigns/d6d1b185-41b7-4cd4-9275-fd1a160054fc
 ```
